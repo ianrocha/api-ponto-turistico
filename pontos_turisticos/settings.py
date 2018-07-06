@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'core',
     'atracoes',
     'comentarios',
@@ -128,3 +129,9 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = 'imagens'
 
 MEDIA_URL = '/media/'
+
+# Utilizando essa configuração todas as views poderam ser filtradas
+# Importando essa configuração na view, somente a mesma será filtrada nessa formato
+# REST_FRAMEWORK = {
+#     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+# }
