@@ -9,6 +9,8 @@ class PontoTuristicoViewSet(ModelViewSet):
     serializer_class = PontoTuristicoSerializer
     filter_backends = (SearchFilter,)
     search_fields = ('nome','endereco__linha1',)
+    # Muda argumento padrão de pesquisa
+    # lookup_field = 'nome'
 
 
     def get_queryset(self):
