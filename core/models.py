@@ -5,7 +5,6 @@ from avaliacoes.models import Avaliacao
 from enderecos.models import Endereco
 
 
-
 class DocIdentificacao(models.Model):
     desc = models.CharField(max_length=100)
 

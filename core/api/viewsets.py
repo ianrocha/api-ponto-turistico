@@ -5,6 +5,7 @@ from rest_framework.decorators import action
 # from rest_framework.authentication import TokenAuthentication
 from core.models import PontoTuristico
 from .serializers import PontoTuristicoSerializer
+from django.http import HttpResponse
 
 
 class PontoTuristicoViewSet(ModelViewSet):
@@ -63,3 +64,16 @@ class PontoTuristicoViewSet(ModelViewSet):
     @action(methods=['get'], detail=True)
     def denunciar(self, request, pk=None):
         pass
+
+    @action(methods=['post'], detail=True)
+    def associa_atracoes(self, request, pk):
+        atracoes = request.data['ids']
+
+        ponto = PontoTuristico.objects.get(id=pk)
+
+        for atracao in atracoes:
+            ponto.atracoes.add(atracao)
+        
+        ponto.save()
+
+        return HttpResponse('Ok')
